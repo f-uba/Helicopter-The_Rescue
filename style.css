@@ -79,3 +79,83 @@ body {
 	padding:10px;
 
 }
+
+.animationHelicopter {
+		background-image:url(images/helicopter.png);
+		animation:playOne .5s steps(2) infinite;
+
+       	-webkit-animation: playOne .5s steps(2) infinite;
+       	-moz-animation: playOne .5s steps(2) infinite;
+       	-ms-animation: playOne .5s steps(2) infinite;
+       	-o-animation: playOne .5s steps(2) infinite;
+}
+
+.animationEnemyOne {
+		background-image:url(images/enemyOne.png);
+		animation:playOne .5s steps(2) infinite;
+
+   		-webkit-animation: playOne .5s steps(2) infinite;
+   		-moz-animation: playOne .5s steps(2) infinite;
+   		-ms-animation: playOne .5s steps(2) infinite;
+   		-o-animation: playOne .5s steps(2) infinite;
+}
+
+.animationFriend {
+		background-image:url(images/friend.png);
+		animation:playTwo .9s steps(12) infinite;
+
+		-webkit-animation: playTwo .9s steps(12) infinite;
+       	-moz-animation: playTwo .9s steps(12) infinite;
+        -ms-animation: playTwo .9s steps(12) infinite;
+        -o-animation: playTwo .9s steps(12) infinite;
+}
+
+@keyframes playOne {
+		from {background-position:0px;}
+		to {background-position:-512px;}
+}
+
+@-webkit-keyframes playOne {
+		from { background-position:0px; }
+	  	to { background-position: -512px; }
+ }
+ 
+ @-moz-keyframes playOne {
+		from { background-position:0px; }
+	  	to { background-position: -512px; }
+ }
+ 
+ @-ms-keyframes playOne {
+		from { background-position:0px; }
+	  	to { background-position: -512px; }
+ }
+ 
+ @-o-keyframes playOne {
+		from { background-position:0px; }
+	  	to { background-position: -512px; }
+ }
+
+ @keyframes playTwo {
+	from {background-position:0px;}
+	to {background-position:-528px;}
+}
+
+@-webkit-keyframes playTwo {
+   from { background-position:    0px; }
+     to { background-position: -528px; }
+}
+
+@-moz-keyframes playTwo {
+   from { background-position:    0px; }
+     to { background-position: -528px; }
+}
+
+@-ms-keyframes playTwo {
+   from { background-position:    0px; }
+     to { background-position: -528px; }
+}
+
+@-o-keyframes playTwo {
+   from { background-position:    0px; }
+     to { background-position: -528px; }
+}
