@@ -61,7 +61,7 @@ body {
 
 #friend {
 	width: 44px;
-	height: 51px;
+	height: 50px;
 	position: absolute;
 	left: 10px;
 	top: 464px;
@@ -70,7 +70,7 @@ body {
 
 #init {
 	width:350px;
-	height:200px;
+	height:250px;
 	background-color:#FFF;
  	margin-left:auto;
     margin-right:auto;
