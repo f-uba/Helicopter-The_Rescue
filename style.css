@@ -1,16 +1,16 @@
 @font-face {
 	font-family:Tittle;
-	src:url(../fonts/ANODETONOONE.TTF);
+	src:url(fonts/ANODETONOONE.TTF);
 }
 
 h1 {
-	font-family:Titulo;
+	font-family:Tittle;
 	font-size:40px;
 	color:#603A03;
 }
 
 body {
-	background-image:url(../imgs/background.jpg);
+	background-image:url(images/background.jpg);
 }
 
 #container{
@@ -25,7 +25,7 @@ body {
 #gameBackground {
 	width:950px;
 	height:630px;
-	background-image:url(../imgs/gameBackground.jpg);
+	background-image:url(images/gameBackground.jpg);
 	border-color:#FFF;
 	border-style:solid;
 }
@@ -36,7 +36,7 @@ body {
 	position:absolute;
 	left:8px;
 	top:179px;
-    background-image:url(../imgs/helicopter.png);
+    background-image:url(images/helicopter.png);
 
 }
 
@@ -46,7 +46,7 @@ body {
 	position: absolute;
 	left: 689px;
 	top: 253px;
-	background-image:url(../imgs/enemyOne.png);
+	background-image:url(images/enemyOne.png);
 	
 }
 
@@ -56,7 +56,7 @@ body {
 	position: absolute;
 	left: 775px;
 	top: 447px;
-	background-image: url(../imgs/enemyTwo.png);
+	background-image: url(images/enemyTwo.png);
 }
 
 #friend {
@@ -65,7 +65,7 @@ body {
 	position: absolute;
 	left: 10px;
 	top: 464px;
-	background-image:url(../imgs/friend.png);
+	background-image:url(images/friend.png);
 }
 
 #init {
