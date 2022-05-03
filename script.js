@@ -6,6 +6,8 @@ function Start() {
 	$("#gameBackground").append("<div id='friend' class='animationFriend'></div>");
 
 	var game = {}
+	var speed = 7.5;
+	var positionY = parseInt(Math.random() * 334);
 	var key = {
 		W: 87,
 		S: 83,
@@ -26,6 +28,7 @@ function Start() {
 	function Loop() {
 		BackgroundMove();
 		PlayerMove();
+		EnemyOneMove();
 	}
 
 	function BackgroundMove() {
@@ -36,20 +39,32 @@ function Start() {
 	function PlayerMove() {	
 		if (game.pressed[key.W]) {
 			var top = parseInt($("#player").css("top"));
-			$("#player").css("top",top - 10);
+			$("#player").css("top", top - 10);
 			
-			if (top<=0) $("#player").css("top",top + 10);
+			if (top<=0) $("#player").css("top", top + 10);
 		}
 		
 		if (game.pressed[key.S]) {		
 			var top = parseInt($("#player").css("top"));
-			$("#player").css("top",top + 10);	
+			$("#player").css("top", top + 10);	
 
-			if (top>=434) $("#player").css("top",top - 10);
+			if (top>=434) $("#player").css("top", top - 10);
 		}
 		
 		if (game.pressed[key.D]) {
 	
 		}
+	}
+
+	function EnemyOneMove() {
+		positionX = parseInt($("#enemyOne").css("left"));
+		$("#enemyOne").css("left", positionX - speed);
+		$("#enemyOne").css("top", positionY);
+			
+		if (positionX <= 0) {
+			positionY = parseInt(Math.random() * 334);
+			$("#enemyOne").css("left", 694);
+			$("#enemyOne").css("top", positionY);		
+		}	
 	}
 }
