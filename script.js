@@ -29,6 +29,7 @@ function Start() {
 		BackgroundMove();
 		PlayerMove();
 		EnemyOneMove();
+		EnemyTwoMove();
 	}
 
 	function BackgroundMove() {
@@ -66,5 +67,12 @@ function Start() {
 			$("#enemyOne").css("left", 694);
 			$("#enemyOne").css("top", positionY);		
 		}	
+	}
+
+	function EnemyTwoMove() {
+        positionX = parseInt($("#enemyTwo").css("left"));
+		$("#enemyTwo").css("left", positionX - 4);
+				
+		if (positionX <= 0) $("#enemyTwo").css("left", 775);
 	}
 }
