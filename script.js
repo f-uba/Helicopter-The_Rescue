@@ -8,6 +8,7 @@ function Start() {
 	var game = {}
 	var speed = 7.5;
 	var positionY = parseInt(Math.random() * 334);
+	var shotEnable = true;
 	var key = {
 		W: 87,
 		S: 83,
@@ -54,7 +55,7 @@ function Start() {
 		}
 		
 		if (game.pressed[key.D]) {
-	
+			Shot();
 		}
 	}
 
@@ -82,5 +83,31 @@ function Start() {
 		$("#friend").css("left", positionX + 1);
 					
 		if (positionX > 906) $("#friend").css("left", 0);
+	}
+
+	function Shot() {
+		if (shotEnable == true) {
+			shotEnable = false;
+			var top = parseInt($("#player").css("top"))
+			var positionX = parseInt($("#player").css("left"))
+			shotTop = top + 37;
+			shotX = positionX + 190;
+			$("#gameBackground").append("<div id='shot'></div");
+			$("#shot").css("top", shotTop);
+			$("#shot").css("left", shotX);
+			var shotTime = window.setInterval(MakeShot, 30);
+		}
+	 
+		function MakeShot() {
+			positionX = parseInt($("#shot").css("left"));
+			$("#shot").css("left", positionX + 15); 
+
+			if (positionX > 900) {
+				window.clearInterval(shotTime);
+				shotTime = null;
+				$("#shot").remove();
+				shotEnable = true;				
+		    }
+		}	 
 	}
 }
