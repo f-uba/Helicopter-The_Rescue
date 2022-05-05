@@ -7,6 +7,16 @@ function Start() {
 	$("#gameBackground").append("<div id='scoreboard'></div>");
 	$("#gameBackground").append("<div id='energy'></div>");
 
+	var shotSound = document.getElementById("shotSound");
+	var explosionSound = document.getElementById("explosionSound");
+	var music = document.getElementById("music");
+	var gamerOverSound = document.getElementById("gamerOverSound");
+	var lostSound = document.getElementById("lostSound");
+	var rescueSound = document.getElementById("rescueSound");
+
+	music.addEventListener("ended", function(){ music.currentTime = 0; music.play(); }, false);
+	music.play();
+
 	var game = {}
 	var gameOver = false;
 	var speed = 7.5;
@@ -97,6 +107,7 @@ function Start() {
 
 	function Shot() {
 		if (shotEnable == true) {
+			shotSound.play();
 			var top = parseInt($("#player").css("top"))
 			var positionX = parseInt($("#player").css("left"))
 
@@ -162,7 +173,8 @@ function Start() {
 			positionY = parseInt(Math.random() * 334);
 			$("#enemyOne").css("left", 694);
 			$("#enemyOne").css("top", positionY);
-			points += 100;			
+			points += 100;
+			speed += 0.1;			
 		}
 
 		if (collisionFour.length > 0) {
@@ -176,6 +188,7 @@ function Start() {
 		}
 
 		if (collisionFive.length > 0) {
+			rescueSound.play();
 			RepositioningFriend();
 			$("#friend").remove();
 			saves++;
@@ -193,6 +206,7 @@ function Start() {
 	}
 
 	function ExplosionOne(enemyOneX, enemyOneY) {
+		explosionSound.play();
 		$("#gameBackground").append("<div id='explosionOne'></div");
 		$("#explosionOne").css("background-image", "url(images/explosion.png)");
 		var div=$("#explosionOne");
@@ -210,6 +224,7 @@ function Start() {
 	}
 
 	function ExplosionTwo(enemyTwoX, enemyTwoY) {	
+		explosionSound.play();
 		$("#gameBackground").append("<div id='explosionTwo'></div");
 		$("#explosionTwo").css("background-image", "url(images/explosion.png)");
 		var div2=$("#explosionTwo");
@@ -227,6 +242,7 @@ function Start() {
 	}
 
 	function ExplosionThree(friendX, friendY) {
+		lostSound.play();
 		$("#gameBackground").append("<div id='explosionThree' class='animationFriendDeath'></div");
 		$("#explosionThree").css("top", friendY);
 		$("#explosionThree").css("left", friendX);
