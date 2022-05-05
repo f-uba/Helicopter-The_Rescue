@@ -4,12 +4,16 @@ function Start() {
 	$("#gameBackground").append("<div id='enemyOne' class='animationEnemyOne'></div>");
 	$("#gameBackground").append("<div id='enemyTwo'></div>");
 	$("#gameBackground").append("<div id='friend' class='animationFriend'></div>");
+	$("#gameBackground").append("<div id='scoreboard'></div>");
 
 	var game = {}
 	var gameOver = false;
 	var speed = 7.5;
 	var positionY = parseInt(Math.random() * 334);
 	var shotEnable = true;
+	var points = 0;
+	var saves = 0;
+	var lost = 0;
 	var key = {
 		W: 87,
 		S: 83,
@@ -34,6 +38,7 @@ function Start() {
 		EnemyTwoMove();
 		FriendMove();
 		Collision();
+		Scoreboard();
 	}
 
 	function BackgroundMove() {
@@ -149,7 +154,8 @@ function Start() {
 			$("#shot").css("left",950);			
 			positionY = parseInt(Math.random() * 334);
 			$("#enemyOne").css("left", 694);
-			$("#enemyOne").css("top", positionY);			
+			$("#enemyOne").css("top", positionY);
+			points += 100;			
 		}
 
 		if (collisionFour.length > 0) {
@@ -158,12 +164,14 @@ function Start() {
 			$("#enemyTwo").remove();
 			ExplosionTwo(enemyTwoX, enemyTwoY);
 			$("#shot").css("left", 950);
-			RepositioningEnemyTwo();	
+			RepositioningEnemyTwo();
+			points += 50;	
 		}
 
 		if (collisionFive.length > 0) {
 			RepositioningFriend();
 			$("#friend").remove();
+			saves++;
 		}
 
 		if (collisionSix.length > 0) {
@@ -171,7 +179,8 @@ function Start() {
 			friendY = parseInt($("#friend").css("top"));
 			ExplosionThree(friendX, friendY);
 			$("#friend").remove();
-			RepositioningFriend();		
+			RepositioningFriend();	
+			lost++;	
 		}
 	}
 
@@ -245,5 +254,10 @@ function Start() {
 				$("#gameBackground").append("<div id='friend' class='anima3'></div>");	
 			}		
 		}
+	}
+
+	function Scoreboard() {
+		$("#scoreboard").html("<h2> Pontos: " + points + " Salvos: " + 
+		saves + " Perdidos: " + lost + "</h2>");
 	}
 }
