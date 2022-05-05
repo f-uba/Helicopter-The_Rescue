@@ -137,6 +137,7 @@ function Start() {
 			positionY = parseInt(Math.random() * 334);
 			$("#enemyOne").css("left", 694);
 			$("#enemyOne").css("top", positionY);
+			points -= 50
 		}	
 
 		if (collisionTwo.length > 0) {
@@ -144,7 +145,8 @@ function Start() {
 			enemyTwoY = parseInt($("#enemyTwo").css("top"));
 			ExplosionTwo(enemyTwoX, enemyTwoY);
 			$("#enemyTwo").remove();
-			RepositioningEnemyTwo();			
+			RepositioningEnemyTwo();
+			points -= 25;			
 		}
 
 		if (collisionThree.length > 0) {
@@ -179,7 +181,8 @@ function Start() {
 			friendY = parseInt($("#friend").css("top"));
 			ExplosionThree(friendX, friendY);
 			$("#friend").remove();
-			RepositioningFriend();	
+			RepositioningFriend();
+			points -= 100;	
 			lost++;	
 		}
 	}
@@ -245,13 +248,14 @@ function Start() {
 	}
 
 	function RepositioningFriend() {
-		var friendTime = window.setInterval(RepositioningSix, 6000);
-			function RepositioningSix() {
+		var friendTime = window.setInterval(RepositioningSix, 4000);
+		
+		function RepositioningSix() {
 			window.clearInterval(friendTime);
 			friendTime = null;
 			
 			if (gameOver == false) {	
-				$("#gameBackground").append("<div id='friend' class='anima3'></div>");	
+				$("#gameBackground").append("<div id='friend' class='animationFriend'></div>");	
 			}		
 		}
 	}
