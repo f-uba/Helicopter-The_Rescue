@@ -5,12 +5,14 @@ function Start() {
 	$("#gameBackground").append("<div id='enemyTwo'></div>");
 	$("#gameBackground").append("<div id='friend' class='animationFriend'></div>");
 	$("#gameBackground").append("<div id='scoreboard'></div>");
+	$("#gameBackground").append("<div id='energy'></div>");
 
 	var game = {}
 	var gameOver = false;
 	var speed = 7.5;
 	var positionY = parseInt(Math.random() * 334);
 	var shotEnable = true;
+	var actualEnergy = 3;
 	var points = 0;
 	var saves = 0;
 	var lost = 0;
@@ -39,6 +41,7 @@ function Start() {
 		FriendMove();
 		Collision();
 		Scoreboard();
+		Energy();
 	}
 
 	function BackgroundMove() {
@@ -138,6 +141,7 @@ function Start() {
 			$("#enemyOne").css("left", 694);
 			$("#enemyOne").css("top", positionY);
 			points -= 50
+			actualEnergy--;
 		}	
 
 		if (collisionTwo.length > 0) {
@@ -146,7 +150,8 @@ function Start() {
 			ExplosionTwo(enemyTwoX, enemyTwoY);
 			$("#enemyTwo").remove();
 			RepositioningEnemyTwo();
-			points -= 25;			
+			points -= 25;
+			actualEnergy--;			
 		}
 
 		if (collisionThree.length > 0) {
@@ -263,5 +268,23 @@ function Start() {
 	function Scoreboard() {
 		$("#scoreboard").html("<h2> Pontos: " + points + " Salvos: " + 
 		saves + " Perdidos: " + lost + "</h2>");
+	}
+
+	function Energy() {
+		if (actualEnergy == 3) {
+			$("#energy").css("background-image", "url(images/energyThree.png)");
+		}
+	
+		if (actualEnergy == 2) {
+			$("#energy").css("background-image", "url(images/energyTwo.png)");
+		}
+	
+		if (actualEnergy == 1) {	
+			$("#energy").css("background-image", "url(images/energyOne.png)");
+		}
+	
+		if (actualEnergy == 0) {
+			$("#energy").css("background-image", "url(images/energyZero.png)");
+		}
 	}
 }
