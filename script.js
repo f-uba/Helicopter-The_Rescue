@@ -32,6 +32,7 @@ function Start() {
 		EnemyOneMove();
 		EnemyTwoMove();
 		FriendMove();
+		Collision();
 	}
 
 	function BackgroundMove() {
@@ -87,14 +88,17 @@ function Start() {
 
 	function Shot() {
 		if (shotEnable == true) {
-			shotEnable = false;
 			var top = parseInt($("#player").css("top"))
 			var positionX = parseInt($("#player").css("left"))
+
+			shotEnable = false;
 			shotTop = top + 37;
 			shotX = positionX + 190;
+
 			$("#gameBackground").append("<div id='shot'></div");
 			$("#shot").css("top", shotTop);
 			$("#shot").css("left", shotX);
+
 			var shotTime = window.setInterval(MakeShot, 30);
 		}
 	 
@@ -109,5 +113,36 @@ function Start() {
 				shotEnable = true;				
 		    }
 		}	 
+	}
+
+	function Collision() {
+		var collisionOne = ($("#player").collision($("#enemyOne")));
+		
+		if (collisionOne.length > 0) {
+			enemyOneX = parseInt($("#enemyOne").css("left"));
+			enemyOneY = parseInt($("#enemyOne").css("top"));
+			ExplosionOne(enemyOneX, enemyOneY);
+		
+			positionY = parseInt(Math.random() * 334);
+			$("#enemyOne").css("left", 694);
+			$("#enemyOne").css("top", positionY);
+		}	
+	}
+
+	function ExplosionOne(enemyOneX, enemyOneY) {
+		$("#gameBackground").append("<div id='explosionOne'></div");
+		$("#explosionOne").css("background-image", "url(images/explosion.png)");
+		var div=$("#explosionOne");
+		div.css("top", enemyOneY);
+		div.css("left", enemyOneX);
+		div.animate({width:200, opacity:0}, "slow");
+		
+		var explosionTime = window.setInterval(removeExplosion, 1000);
+		
+		function removeExplosion() {			
+			div.remove();
+			window.clearInterval(explosionTime);
+			explosionTime = null;		
+		}			
 	}
 }
