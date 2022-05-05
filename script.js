@@ -165,6 +165,14 @@ function Start() {
 			RepositioningFriend();
 			$("#friend").remove();
 		}
+
+		if (collisionSix.length > 0) {
+			friendX = parseInt($("#friend").css("left"));
+			friendY = parseInt($("#friend").css("top"));
+			ExplosionThree(friendX, friendY);
+			$("#friend").remove();
+			RepositioningFriend();		
+		}
 	}
 
 	function ExplosionOne(enemyOneX, enemyOneY) {
@@ -198,6 +206,19 @@ function Start() {
 			div2.remove();
 			window.clearInterval(explosiomTwoTime);
 			explosiomTwoTime = null;
+		}
+	}
+
+	function ExplosionThree(friendX, friendY) {
+		$("#gameBackground").append("<div id='explosionThree' class='animationFriendDeath'></div");
+		$("#explosionThree").css("top", friendY);
+		$("#explosionThree").css("left", friendX);
+		var explosionTimeThree = window.setInterval(removeExplosion, 1000);
+		
+		function removeExplosion() {
+			$("#explosionThree").remove();
+			window.clearInterval(explosionTimeThree);
+			explosionTimeThree = null;	
 		}
 	}
 
