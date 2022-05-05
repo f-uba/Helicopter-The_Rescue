@@ -15,6 +15,12 @@ h2 {
 	color:#FFF
 }
 
+h3 {
+	font-family:Tittle;
+	font-size:20px;
+	color:#603A03;
+}
+
 body {
 	background-image:url(images/background.jpg);
 }
@@ -122,6 +128,17 @@ body {
 	position: absolute;
 	left: 750px;
 	top: 7px;	
+}
+
+#end {
+	width:350px;
+	height:200px;
+	background-color:#FFF;
+ 	margin-left:auto;
+    margin-right:auto;
+ 	margin-top:100px;
+	text-align:center;
+	padding:10px;
 }
 
 .animationHelicopter {
