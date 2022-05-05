@@ -96,35 +96,54 @@ body {
 	position:absolute;
 }
 
-.animationHelicopter {
-		background-image:url(images/helicopter.png);
-		animation:playOne .5s steps(2) infinite;
+#explosionThree {
+	width:44px;
+	height:51px;
+	position:absolute;
+}
 
-       	-webkit-animation: playOne .5s steps(2) infinite;
-       	-moz-animation: playOne .5s steps(2) infinite;
-       	-ms-animation: playOne .5s steps(2) infinite;
-       	-o-animation: playOne .5s steps(2) infinite;
+.animationHelicopter {
+	background-image:url(images/helicopter.png);
+	animation:playOne .5s steps(2) infinite;
+
+    -webkit-animation: playOne .5s steps(2) infinite;
+    -moz-animation: playOne .5s steps(2) infinite;
+    -ms-animation: playOne .5s steps(2) infinite;
+    -o-animation: playOne .5s steps(2) infinite;
 }
 
 .animationEnemyOne {
-		background-image:url(images/enemyOne.png);
-		animation:playOne .5s steps(2) infinite;
+	background-image:url(images/enemyOne.png);
+	animation:playOne .5s steps(2) infinite;
 
-   		-webkit-animation: playOne .5s steps(2) infinite;
-   		-moz-animation: playOne .5s steps(2) infinite;
-   		-ms-animation: playOne .5s steps(2) infinite;
-   		-o-animation: playOne .5s steps(2) infinite;
+   	-webkit-animation: playOne .5s steps(2) infinite;
+   	-moz-animation: playOne .5s steps(2) infinite;
+   	-ms-animation: playOne .5s steps(2) infinite;
+   	-o-animation: playOne .5s steps(2) infinite;
 }
 
 .animationFriend {
-		background-image:url(images/friend.png);
-		animation:playTwo .9s steps(12) infinite;
+	background-image:url(images/friend.png);
+	animation:playTwo .9s steps(12) infinite;
 
-		-webkit-animation: playTwo .9s steps(12) infinite;
-       	-moz-animation: playTwo .9s steps(12) infinite;
-        -ms-animation: playTwo .9s steps(12) infinite;
-        -o-animation: playTwo .9s steps(12) infinite;
+	-webkit-animation: playTwo .9s steps(12) infinite;
+    -moz-animation: playTwo .9s steps(12) infinite;
+    -ms-animation: playTwo .9s steps(12) infinite;
+    -o-animation: playTwo .9s steps(12) infinite;
 }
+
+.animationFriendDeath {
+	width:44px;
+	height:51px;
+	background-image:url(images/friendDeath.png);
+	animation:playThree .5s steps(7) infinite;
+	
+	-webkit-animation: playThree .5s steps(7) infinite;
+    -moz-animation: playThree .5s steps(7) infinite;
+    -ms-animation: playThree .5s steps(7) infinite;
+    -o-animation: playThree .5s steps(7) infinite;
+}
+
 
 @keyframes playOne {
 		from {background-position:0px;}
@@ -174,4 +193,29 @@ body {
 @-o-keyframes playTwo {
    from { background-position:    0px; }
      to { background-position: -528px; }
+}
+
+@keyframes playThree {
+	from {background-position:0px;}
+	to {background-position:-308px;}
+}
+
+@-webkit-keyframes playThree {
+   from { background-position:    0px; }
+     to { background-position: -308px; }
+}
+
+@-moz-keyframes playThree {
+   from { background-position:    0px; }
+     to { background-position: -308px; }
+}
+
+@-ms-keyframes playThree {
+   from { background-position:    0px; }
+     to { background-position: -308px; }
+}
+
+@-o-keyframes playThree {
+   from { background-position:    0px; }
+     to { background-position: -308px; }
 }
