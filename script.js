@@ -6,6 +6,7 @@ function Start() {
 	$("#gameBackground").append("<div id='friend' class='animationFriend'></div>");
 
 	var game = {}
+	var gameOver = false;
 	var speed = 7.5;
 	var positionY = parseInt(Math.random() * 334);
 	var shotEnable = true;
@@ -117,7 +118,12 @@ function Start() {
 
 	function Collision() {
 		var collisionOne = ($("#player").collision($("#enemyOne")));
-		
+		var collisionTwo = ($("#player").collision($("#enemyTwo")));
+		var collisionThree = ($("#shot").collision($("#enemyOne")));
+		var collisionFour = ($("#shot").collision($("#enemyTwo")));
+		var collisionFive = ($("#player").collision($("#friend")));
+		var collisionSix = ($("#enemyTwo").collision($("#friend")));
+
 		if (collisionOne.length > 0) {
 			enemyOneX = parseInt($("#enemyOne").css("left"));
 			enemyOneY = parseInt($("#enemyOne").css("top"));
@@ -127,6 +133,38 @@ function Start() {
 			$("#enemyOne").css("left", 694);
 			$("#enemyOne").css("top", positionY);
 		}	
+
+		if (collisionTwo.length > 0) {
+			enemyTwoX = parseInt($("#enemyTwo").css("left"));
+			enemyTwoY = parseInt($("#enemyTwo").css("top"));
+			ExplosionTwo(enemyTwoX, enemyTwoY);
+			$("#enemyTwo").remove();
+			RepositioningEnemyTwo();			
+		}
+
+		if (collisionThree.length > 0) {
+			enemyOneX = parseInt($("#enemyOne").css("left"));
+			enemyOneY = parseInt($("#enemyOne").css("top"));	
+			ExplosionOne(enemyOneX, enemyOneY);
+			$("#shot").css("left",950);			
+			positionY = parseInt(Math.random() * 334);
+			$("#enemyOne").css("left", 694);
+			$("#enemyOne").css("top", positionY);			
+		}
+
+		if (collisionFour.length > 0) {
+			enemyTwoX = parseInt($("#enemyTwo").css("left"));
+			enemyTwoY = parseInt($("#enemyTwo").css("top"));
+			$("#enemyTwo").remove();
+			ExplosionTwo(enemyTwoX, enemyTwoY);
+			$("#shot").css("left", 950);
+			RepositioningEnemyTwo();	
+		}
+
+		if (collisionFive.length > 0) {
+			RepositioningFriend();
+			$("#friend").remove();
+		}
 	}
 
 	function ExplosionOne(enemyOneX, enemyOneY) {
@@ -144,5 +182,47 @@ function Start() {
 			window.clearInterval(explosionTime);
 			explosionTime = null;		
 		}			
+	}
+
+	function ExplosionTwo(enemyTwoX, enemyTwoY) {	
+		$("#gameBackground").append("<div id='explosionTwo'></div");
+		$("#explosionTwo").css("background-image", "url(images/explosion.png)");
+		var div2=$("#explosionTwo");
+		div2.css("top", enemyTwoY);
+		div2.css("left", enemyTwoX);
+		div2.animate({width:200, opacity:0}, "slow");
+		
+		var explosiomTwoTime = window.setInterval(removeExplosion, 1000);
+		
+		function removeExplosion() {
+			div2.remove();
+			window.clearInterval(explosiomTwoTime);
+			explosiomTwoTime = null;
+		}
+	}
+
+	function RepositioningEnemyTwo() {
+		var collisionFourTime = window.setInterval(RepositioningFour, 5000);
+			
+		function RepositioningFour() {
+			window.clearInterval(collisionFourTime);
+			collisionFourTime = null;
+				
+			if (gameOver == false) {
+				$("#gameBackground").append("<div id=enemyTwo></div");
+			}	
+		}	
+	}
+
+	function RepositioningFriend() {
+		var friendTime = window.setInterval(RepositioningSix, 6000);
+			function RepositioningSix() {
+			window.clearInterval(friendTime);
+			friendTime = null;
+			
+			if (gameOver == false) {	
+				$("#gameBackground").append("<div id='friend' class='anima3'></div>");	
+			}		
+		}
 	}
 }
